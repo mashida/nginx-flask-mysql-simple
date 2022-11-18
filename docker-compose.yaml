@@ -17,11 +17,15 @@ services:
   app:
     build: app
     restart: always
+    volumes:
+      - ./app/src:/src
     secrets:
       - db-password
     networks:
       - backend-network
       - frontend-network
+    ports:
+      - 3000:3000
 
   web:
     build: web
